@@ -8,6 +8,20 @@
         zmk,matrix_transform = &default_transform;
     };
 
+    // RGB LED widget (caksoylar/zmk-rgbled-widget) 用の alias。
+    // 旧 rgbled_adapter は board 別 overlay で alias を提供していたが、
+    // 新ボード命名(xiao_ble)向けに変更され seeeduino_xiao_ble では適用されない。
+    // そのため XIAO BLE オンボード RGB LED に対して自前で alias を定義する。
+    aliases {
+        led-red = &led0;    // P0.26
+        led-green = &led1;  // P0.30
+        led-blue = &led2;   // P0.06
+    };
+
+    leds {
+        status = "okay";
+    };
+
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <11>;
